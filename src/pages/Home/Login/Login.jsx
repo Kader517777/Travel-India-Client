@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  console.log(import.meta.env.ApiKey);
   return (
     <div className="">
       <div className="bg-[#FFFFFF]">
