@@ -9,12 +9,12 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBFWUcIej7EzIA2N2AyEmEYgyvO74rU54U",
-    authDomain: "travel-india-8e5eb.firebaseapp.com",
-    projectId: "travel-india-8e5eb",
-    storageBucket: "travel-india-8e5eb.appspot.com",
-    messagingSenderId: "256024156522",
-    appId: "1:256024156522:web:db6b5a46a6d1266bfdad13"
+    apiKey: process.env.ApiKey,
+    authDomain: process.env.AuthDomain,
+    projectId: process.env.ProjectId,
+    storageBucket: process.env.StorageBucket,
+    messagingSenderId: process.env.MessagingSenderId,
+    appId: process.env.AppId,
 };
 
 // Initialize Firebase
