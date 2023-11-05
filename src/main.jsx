@@ -8,8 +8,10 @@ import Navber from './component/Navber';
 import AuthContext from './Provider/AuthContext';
 import Main from './layout/Main';
 import "./index.css";
-import Login from './pages/Home/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
+import Login from './pages/Login/Login';
+import Home from './pages/Home/Home';
+import AddBlog from './pages/AddBlog/AddBlog';
 
 
 const router = createBrowserRouter([
@@ -19,11 +21,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <p>Home</p>,
+        element: <Home></Home>,
       },
       {
         path: '/addblog',
-        element: <p>Add Blog Page</p>,
+        element: <AddBlog></AddBlog>,
       },
       {
         path: '/allblogs',
