@@ -1,14 +1,7 @@
-import axios from "axios";
 
-const Blogs = ({ blog }) => {
-    const { currentTime, currentDay, title, imgUrl, category, shortDescription } = blog;
-    // handle wishlist
-    const handleWishlist = () => {
-        axios.post('http://localhost:3000/wishlist', blog)
-            .then(res => {
-                console.log(res.data)
-            })
-    }
+const Wishlist = ({ blog, handleWishlistRemove }) => {
+    const { currentTime, currentDay, title, imgUrl, category, shortDescription, _id } = blog;
+    console.log(blog);
     return (
         <div className="card">
             <figure>
@@ -21,11 +14,11 @@ const Blogs = ({ blog }) => {
                 <p>category: {category}</p>
                 <div className="justify-end px-0">
                     <button className="btn btn-primary w-full my-5">Details</button><br />
-                    <button onClick={() => handleWishlist()} className="btn btn-primary w-full">Wishlist</button>
+                    <button onClick={() => handleWishlistRemove(_id)} className="btn btn-primary w-full">Remove</button>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Blogs;
+export default Wishlist;

@@ -13,6 +13,7 @@ import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import AddBlog from './pages/AddBlog/AddBlog';
 import AllBlogs from './pages/AllBlogs/AllBlogs';
+import AllWishlist from './pages/Wishlist/allWishlist';
 
 
 const router = createBrowserRouter([
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/wishlist',
-        element: <p>Wishlist</p>,
+        element: <AllWishlist></AllWishlist>,
       },
       {
         path: '/login',
