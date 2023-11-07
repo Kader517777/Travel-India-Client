@@ -1,9 +1,11 @@
 import Baner from "./Baner";
+import RecentBlogs from "./RecentBlogs";
 
 const Home = () => {
     return (
-        <div>
+        <div className=" container mx-auto">
             <Baner></Baner>
+            <RecentBlogs></RecentBlogs>
 
         </div>
     );
