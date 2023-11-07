@@ -12,6 +12,7 @@ import SignUp from './pages/SignUp/SignUp';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import AddBlog from './pages/AddBlog/AddBlog';
+import AllBlogs from './pages/AllBlogs/AllBlogs';
 
 
 const router = createBrowserRouter([
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/allblogs',
-        element: <p>All Blogs page</p>,
+        element: <AllBlogs></AllBlogs>,
       },
       {
         path: '/featuredblogs',

@@ -1,10 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-const RecentBlog = ({ blog }) => {
+const Blogs = ({ blog }) => {
     const { currentTime, currentDay, title, imgUrl, category, shortDescription } = blog;
-
-
     return (
         <div className="card">
             <figure>
@@ -24,4 +20,4 @@ const RecentBlog = ({ blog }) => {
     );
 };
 
-export default RecentBlog;
+export default Blogs;
