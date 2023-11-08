@@ -1,10 +1,28 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
+import { useContext } from "react";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { userContext } from "../Provider/AuthContext";
 
 
 const RecentBlog = ({ blog }) => {
-    const { currentTime, currentDay, title, imgUrl, category, shortDescription } = blog;
+    const { user } = useContext(userContext);
+    const { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription, _id } = blog;
 
-
+    // handle wishlist
+    const handleWishlist = () => {
+        if (!user) {
+            return toast.error('Please Sign Up or Login!')
+        }
+        const blogWithUser = { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription, email: user?.email };
+        axios.post(`http://localhost:3000/wishlist/${_id}`, blogWithUser)
+            .then(res => {
+                if (res.data.acknowledged) {
+                    toast.success('WishList added your Blog!')
+                }
+            })
+    }
     return (
         <div className="card">
             <figure>
@@ -16,8 +34,8 @@ const RecentBlog = ({ blog }) => {
                 <p>{shortDescription}</p>
                 <p>category: {category}</p>
                 <div className="justify-end px-0">
-                    <button className="btn btn-primary w-full my-5">Details</button><br />
-                    <button className="btn btn-primary w-full">Wishlist</button>
+                    <Link to={`/blogDetails/${_id}`}><button className="btn btn-primary w-full my-5">Details</button></Link><br />
+                    <button onClick={() => handleWishlist()} className="btn btn-primary w-full">Wishlist</button>
                 </div>
             </div>
         </div>

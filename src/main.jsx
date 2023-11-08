@@ -15,6 +15,7 @@ import AddBlog from './pages/AddBlog/AddBlog';
 import AllBlogs from './pages/AllBlogs/AllBlogs';
 import AllWishlist from './pages/Wishlist/allWishlist';
 import PrivateRoute from './Route/PrivateRoute';
+import BlogDetails from './pages/BlogDetails/BlogDetails';
 
 
 const router = createBrowserRouter([
@@ -53,8 +54,8 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
       {
-        path: '/blogDetails',
-        element: <p>fgldhdh blog details</p>,
+        path: '/blogDetails/:id',
+        element: <BlogDetails></BlogDetails>,
       },
     ]
   },

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Blogs = ({ blog }) => {
     const { user } = useContext(userContext);
-    const { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription } = blog;
+    const { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription, _id } = blog;
 
     // handle wishlist
     const handleWishlist = () => {
@@ -14,7 +14,7 @@ const Blogs = ({ blog }) => {
             return toast.error('Please Sign Up or Login!')
         }
         const blogWithUser = { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription, email: user?.email };
-        axios.post('http://localhost:3000/wishlist', blogWithUser)
+        axios.post(`http://localhost:3000/wishlist/${_id}`, blogWithUser)
             .then(res => {
                 if (res.data.acknowledged) {
                     toast.success('WishList added your Blog!')
@@ -32,7 +32,7 @@ const Blogs = ({ blog }) => {
                 <p>{shortDescription}</p>
                 <p>category: {category}</p>
                 <div className="justify-end px-0">
-                    <Link to={'/blogDetails'}><button className="btn btn-primary w-full my-5">Details</button><br /></Link>
+                    <Link to={`/blogDetails/${_id}`}><button className="btn btn-primary w-full my-5">Details</button><br /></Link>
                     <button onClick={() => handleWishlist()} className="btn btn-primary w-full">Wishlist</button>
                 </div>
             </div>
