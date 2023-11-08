@@ -1,7 +1,9 @@
 import axios from "axios";
+import { useContext } from "react";
+import { userContext } from "../../Provider/AuthContext";
 
 const AddBlog = () => {
-
+    const { user } = useContext(userContext);
     const handleBlogSubmit = (e) => {
         e.preventDefault();
         const currentTime = new Date().toLocaleTimeString();
@@ -12,7 +14,7 @@ const AddBlog = () => {
         const shortDescription = e.target.shortDescription.value;
         const LongDescription = e.target.LongDescription.value;
         console.log(title, imgUrl, category, shortDescription, LongDescription);
-        const blog = { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription };
+        const blog = { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription, writer: user.email };
 
         axios.post('http://localhost:3000/addBlog', blog)
             .then(res => {
