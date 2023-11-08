@@ -8,7 +8,6 @@ const RecentBlogs = () => {
     const [allBlogs, setAllBlogs] = useState(null);
 
     const sortedDates = allBlogs?.sort((p1, p2) => (new Date(p2.currentDay) - new Date(p1.currentDay)));
-    console.log(sortedDates?.slice(1, 7));
     useEffect(() => {
         axios.get('http://localhost:3000/allBlogs')
             .then(res => {

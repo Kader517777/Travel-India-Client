@@ -1,7 +1,52 @@
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { Link, Navigate, useLocation, useNavigate, useNavigation } from "react-router-dom";
+import { userContext } from "../../Provider/AuthContext";
 
 const Login = () => {
-  console.log(import.meta.env.ApiKey);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location?.state?.pathname);
+  const { loggedinUser, createGoogleUser } = useContext(userContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    e.target.reset()
+
+    if (password < 6) {
+      return toast.error('At least 6 characters');
+    }
+    else if (!/[A-Z]/.test(password)) {
+      return toast.error('At least 1 capital letter');
+    }
+    else if (!/[!S#$%&?]/.test(password)) {
+      return toast.error('At least 1 special character');
+    }
+    else if (!/[0-9]/.test(password)) {
+      return toast.error('At least 1 numeric character');
+    }
+
+    loggedinUser(email, password)
+      .then(() => {
+        toast.success('Successfully Login!!');
+      })
+      .then((error) => {
+        console.log(error.code);
+      })
+  }
+
+  const handleGooglePopUp = () => {
+    createGoogleUser()
+      .then(() => {
+        toast.success('Successfully Login!!');
+        // navigate(`/${location?.state?.pathname}`);
+      })
+      .then((error) => {
+        console.log(error);
+      })
+  }
   return (
     <div className="">
       <div className="bg-[#FFFFFF]">
@@ -12,20 +57,20 @@ const Login = () => {
               <div className="text-center lg:text-left">
                 <img src="https://i.ibb.co/z7xZyZb/timenew.png" className=" h-full " alt="" />
               </div>
-              <form className="card-body flex-shrink-0">
+              <form onSubmit={handleLogin} className="card-body flex-shrink-0">
 
                 <h1 className="text-5xl font-bold">Login now!</h1>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
                   </label>
-                  <input type="email" placeholder="email" className="input input-bordered" required />
+                  <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
-                  <input type="password" placeholder="password" className="input input-bordered" required />
+                  <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                   <label className="label">
                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                   </label>
@@ -35,7 +80,7 @@ const Login = () => {
                 </div>
                 <div>
                   <p>Dont have Account? <Link className="text-green-600 font-bold" to={'/signup'}>Create an Account</Link></p>
-                  <p>Or, continue with <Link className="text-green-600 font-bold" to={'/'}>Google</Link></p>
+                  <p>Or, continue with <Link className="text-green-600 font-bold" onClick={handleGooglePopUp}>Google</Link></p>
                 </div>
               </form>
             </div>

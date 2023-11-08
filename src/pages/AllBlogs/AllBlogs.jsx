@@ -37,6 +37,7 @@ const AllBlogs = () => {
             })
     }, [])
 
+
     return (
         <div className="mb-12">
             <div className="container mx-auto form-control">

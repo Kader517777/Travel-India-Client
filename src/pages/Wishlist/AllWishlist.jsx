@@ -1,12 +1,15 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { userContext } from "../../Provider/AuthContext";
 import Wishlist from "./Wishlist";
 
 const AllWishlist = () => {
+    const { user } = useContext(userContext);
     const [allWishList, setAllWishList] = useState(null);
     useEffect(() => {
-        axios.get('http://localhost:3000/wishlist')
+        axios.get(`http://localhost:3000/wishlist/?email=${user.email}`)
             .then(res => {
                 setAllWishList(res.data);
             })

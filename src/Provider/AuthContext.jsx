@@ -53,7 +53,7 @@ const AuthContext = ({ children }) => {
         });
     }
     const authInfo = {
-        // user,
+        user,
         loader,
         createEmailPasswordUser,
         createGoogleUser,

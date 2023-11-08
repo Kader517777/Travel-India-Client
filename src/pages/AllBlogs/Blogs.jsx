@@ -1,10 +1,15 @@
 import axios from "axios";
+import { useContext } from "react";
+import { userContext } from "../../Provider/AuthContext";
 
 const Blogs = ({ blog }) => {
-    const { currentTime, currentDay, title, imgUrl, category, shortDescription } = blog;
+    const { user } = useContext(userContext);
+    const { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription } = blog;
+
     // handle wishlist
     const handleWishlist = () => {
-        axios.post('http://localhost:3000/wishlist', blog)
+        const blogWithUser = { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription, email: user?.email };
+        axios.post('http://localhost:3000/wishlist', blogWithUser)
             .then(res => {
                 console.log(res.data)
             })

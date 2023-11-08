@@ -4,12 +4,13 @@ const Wishlist = ({ blog, handleWishlistRemove }) => {
     console.log(blog);
     return (
         <div className="card">
+            <h2 className="text-3xl font-bold mb-4">{title}</h2>
             <figure>
-                <img src={imgUrl} alt="Shoes" className="w-full h-[550px]" />
+                <img src={imgUrl} alt="Shoes" className="w-full h-[250px]" />
             </figure>
             <div className="card-body w-full">
                 <p>Published: {currentTime} {currentDay}</p>
-                <h2 className="card-title">{title}</h2>
+
                 <p>{shortDescription}</p>
                 <p>category: {category}</p>
                 <div className="justify-end px-0">
