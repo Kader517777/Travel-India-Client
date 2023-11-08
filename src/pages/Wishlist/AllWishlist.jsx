@@ -21,7 +21,6 @@ const AllWishlist = () => {
                 if (res.data.acknowledged) {
                     const filterdata = allWishList.filter(item => item._id !== id)
                     setAllWishList(filterdata);
-                    console.log(res.data.acknowledged);
                 }
             })
     }
