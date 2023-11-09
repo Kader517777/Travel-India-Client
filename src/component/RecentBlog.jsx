@@ -26,7 +26,7 @@ const RecentBlog = ({ blog }) => {
     return (
         <div className="card">
             <figure>
-                <img src={imgUrl} alt="Shoes" className="w-full h-[550px]" />
+                <img src={imgUrl} alt="Shoes" className="w-full h-[300px] md:h-[550px]" />
             </figure>
             <div className="card-body w-full">
                 <p>Published: {currentTime} {currentDay}</p>

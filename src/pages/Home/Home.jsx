@@ -1,4 +1,5 @@
 import Baner from "./Baner";
+import Newsletter from "./Newsletter";
 import RecentBlogs from "./RecentBlogs";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <div className=" container mx-auto">
             <Baner></Baner>
             <RecentBlogs></RecentBlogs>
+            <Newsletter></Newsletter>
 
         </div>
     );

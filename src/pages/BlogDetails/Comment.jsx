@@ -1,11 +1,10 @@
 
 const Comment = ({ comment }) => {
-    console.log(comment?.commenterPhotoUR);
     return (
-        <div className="card card-side bg-base-100 shadow-xl">
+        <div className="card lg:card-side bg-base-100 shadow-xl">
 
             <div className="avatar p-5">
-                <div className="w-24 rounded-full">
+                <div className="w-24 h-24 rounded-full">
                     <img src={comment?.commenterPhotoUR} />
                 </div>
             </div>

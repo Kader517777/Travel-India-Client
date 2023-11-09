@@ -2,7 +2,7 @@ import axios, { Axios } from "axios";
 import { useContext } from "react";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { userContext } from "../../Provider/AuthContext";
 import Comment from "./comment";
 
@@ -13,7 +13,6 @@ const BlogDetails = () => {
     const id = useParams();
     const _id = id.id;
 
-    // const { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription } = blog;
 
     useEffect(() => {
         axios.get(`http://localhost:3000/allBlogs/${_id}`)
@@ -51,10 +50,16 @@ const BlogDetails = () => {
 
         axios.post('http://localhost:3000/comment', userCommment)
             .then(res => {
+                if (res.data.acknowledged) {
+                    e.target.reset()
+                };
             })
 
-
     }
+
+
+
+
     return (
         <div className=" container lg:mx-auto">
             <div className=" mb-28 mx-4 lg:mx-0">
@@ -64,6 +69,8 @@ const BlogDetails = () => {
                 <h1 className=" mb-8">{blog?.category}</h1>
                 <p >{blog?.shortDescription}</p>
                 <p className="my-8">{blog?.LongDescription}</p>
+                {/* Check blog writer and show update button */}
+                {blog?.writer == user?.email && <Link to={`/updated/${_id}`}><button className="btn bg-[tomato] text-white py-4 px-6 text-2xl font-bold content-center my-6">Update</button></Link>}
             </div>
             <div className="bg-[#F6F6F6] mb-24 p-12 mx-4 lg:mx-0">
                 <h1 className="text-3xl font-bold">Comments:</h1>
