@@ -31,7 +31,7 @@ const AllBlogs = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:3000/allBlogs')
+        axios.get('https://travel-india-server.vercel.app/allBlogs')
             .then(res => {
                 setAllBlogs(res.data)
             })

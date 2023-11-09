@@ -14,7 +14,7 @@ const Blogs = ({ blog }) => {
             return toast.error('Please Sign Up or Login!')
         }
         const blogWithUser = { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription, email: user?.email };
-        axios.post(`http://localhost:3000/wishlist/${_id}`, blogWithUser)
+        axios.post(`https://travel-india-server.vercel.app/wishlist/${_id}`, blogWithUser)
             .then(res => {
                 if (res.data.acknowledged) {
                     toast.success('WishList added your Blog!')

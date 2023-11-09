@@ -8,6 +8,9 @@ import Wishlist from "./Wishlist";
 const AllWishlist = () => {
     const { user } = useContext(userContext);
     const [allWishList, setAllWishList] = useState(null);
+
+
+
     useEffect(() => {
         axios.get(`http://localhost:3000/wishlist/?email=${user.email}`)
             .then(res => {

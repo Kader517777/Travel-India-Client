@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useContext } from "react";
+import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { userContext } from "../../Provider/AuthContext";
 
@@ -12,7 +13,7 @@ const Update = () => {
     const [getData, setGetData] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/allBlogs/${_id}`)
+        axios.get(`https://travel-india-server.vercel.app/allBlogs/${_id}`)
             .then(res => {
                 const [data] = res.data;
                 setGetData(data);
@@ -28,12 +29,14 @@ const Update = () => {
         const category = e.target.category.value;
         const shortDescription = e.target.shortDescription.value;
         const LongDescription = e.target.LongDescription.value;
-        console.log(title, imgUrl, category, shortDescription, LongDescription);
         const blog = { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription, writer: user.email };
 
-        axios.put(`http://localhost:3000/update/${_id}`, blog)
+        axios.put(`https://travel-india-server.vercel.app/update/${_id}`, blog)
             .then(res => {
-                console.log(res.data);
+                if (res.data.acknowledged) {
+                    e.target.reset();
+                    toast.success('Successfuly updated your blogs');
+                };
             })
 
     }
@@ -44,6 +47,7 @@ const Update = () => {
                 <div className="flex flex-col lg:flex-row items-center justify-center">
                     <div className="card rounded-l-none w-3/4  bg-[#FFFFFF]">
                         <form onSubmit={handleBlogUpdate} className="card-body ">
+                            <h1 className="text-3xl flex justify-center items-center font-bold">Update your Blog</h1>
                             <div className="w-full ">
                                 <p className="text-2xl mb-7">Title</p>
                                 <input type="text" defaultValue={getData?.title} name="title" className=" w-full border-[1px] h-[40px] text-xl font-semibold px-4 outline-none rounded-md" id="" />

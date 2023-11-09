@@ -17,7 +17,7 @@ const AddBlog = () => {
         console.log(title, imgUrl, category, shortDescription, LongDescription);
         const blog = { currentTime, currentDay, title, imgUrl, category, shortDescription, LongDescription, writer: user.email, writerPhoto: user?.photoURL };
 
-        axios.post('http://localhost:3000/addBlog', blog)
+        axios.post('https://travel-india-server.vercel.app/addBlog', blog)
             .then(res => {
                 if (res.data.acknowledged) {
                     e.target.reset();

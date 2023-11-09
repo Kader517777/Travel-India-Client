@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { userContext } from "../../Provider/AuthContext";
+import axios from "axios";
 
 const SignUp = () => {
 
-    const { createEmailPasswordUser, user } = useContext(userContext);
+    const { createEmailPasswordUser, user, jwtCreat } = useContext(userContext);
     console.log(user);
     const handleRegitration = (e) => {
         e.preventDefault();
@@ -29,7 +30,8 @@ const SignUp = () => {
         }
 
         createEmailPasswordUser(email, password)
-            .then(() => {
+            .then((user) => {
+
                 toast.success('Successfully Login!!');
                 e.target.reset();
             })

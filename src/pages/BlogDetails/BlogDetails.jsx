@@ -15,7 +15,7 @@ const BlogDetails = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/allBlogs/${_id}`)
+        axios.get(`https://travel-india-server.vercel.app/allBlogs/${_id}`)
             .then(res => {
                 const [data] = res.data;
                 setBlog(data);
@@ -23,7 +23,7 @@ const BlogDetails = () => {
     }, [])
     // it's blog comment
     useEffect(() => {
-        axios.get(`http://localhost:3000/comment/${_id}`)
+        axios.get(`https://travel-india-server.vercel.app/comment/${_id}`)
             .then(res => {
                 setBlogComment(res.data);
             })
@@ -48,7 +48,7 @@ const BlogDetails = () => {
             return toast.error("please write a email")
         }
 
-        axios.post('http://localhost:3000/comment', userCommment)
+        axios.post('https://travel-india-server.vercel.app/comment', userCommment)
             .then(res => {
                 if (res.data.acknowledged) {
                     e.target.reset()

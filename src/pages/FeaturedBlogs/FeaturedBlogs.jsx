@@ -10,7 +10,7 @@ const FeaturedBlogs = () => {
     const topTenBlogs = sortedDates?.slice(0, 10);
     console.log(topTenBlogs);
     useEffect(() => {
-        axios.get('http://localhost:3000/allBlogs')
+        axios.get('https://travel-india-server.vercel.app/allBlogs')
             .then(res => {
                 setAllBlogs(res.data)
             })

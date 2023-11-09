@@ -18,6 +18,7 @@ import PrivateRoute from './Route/PrivateRoute';
 import BlogDetails from './pages/BlogDetails/BlogDetails';
 import Update from './pages/Update/Update';
 import FeaturedBlogs from './pages/FeaturedBlogs/FeaturedBlogs';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 
 const router = createBrowserRouter([
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <Update></Update>
         </PrivateRoute>,
+      },
+      {
+        path: '*',
+        element: <ErrorPage></ErrorPage>,
       },
     ]
   },

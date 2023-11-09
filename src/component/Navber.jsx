@@ -57,7 +57,7 @@ const Navber = () => {
                         </NavLink></li>
                     </ul>
                 </div>
-                <p className="flex items-center text-xl"><img className="w-8 h-6 mr-2 ml-0 md:ml-6" src="" alt="" />Travel India</p>
+                <p className="flex items-center text-xl"><img className="w-8 h-6 mr-2 ml-0 md:ml-6" src="https://i.ibb.co/Ky4YtNN/images.png" alt="" />Travel India</p>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

@@ -9,7 +9,7 @@ const RecentBlogs = () => {
 
     const sortedDates = allBlogs?.sort((p1, p2) => (new Date(p2.currentDay) - new Date(p1.currentDay)));
     useEffect(() => {
-        axios.get('http://localhost:3000/allBlogs')
+        axios.get('https://travel-india-server.vercel.app/allBlogs')
             .then(res => {
                 setAllBlogs(res.data)
             })

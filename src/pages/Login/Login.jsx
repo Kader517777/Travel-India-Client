@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, Navigate, useLocation, useNavigate, useNavigation } from "react-router-dom";
@@ -30,6 +31,7 @@ const Login = () => {
 
     loggedinUser(email, password)
       .then(() => {
+
         toast.success('Successfully Login!!');
       })
       .then((error) => {
@@ -40,7 +42,9 @@ const Login = () => {
   const handleGooglePopUp = () => {
     createGoogleUser()
       .then(() => {
+
         toast.success('Successfully Login!!');
+
         // navigate(`/${location?.state?.pathname}`);
       })
       .then((error) => {
